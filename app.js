@@ -99,8 +99,20 @@ initialWeight.addEventListener("keypress", function (event) {
   if (event.key === "Enter") {
     event.preventDefault();
     weightConvert();
+    autoScroll();
   }
 });
+function autoScroll() {
+  if (window.innerWidth < 631) {
+    setTimeout(() => {
+      addSpacemanImg.scrollIntoView({
+        block: "start",
+        behavior: "smooth",
+        inline: "start",
+      });
+    }, 100);
+  }
+}
 
 function blink() {
   initialWeight.classList.remove("blink");
@@ -135,6 +147,7 @@ function keyfunction() {
   document.querySelector(".container").style.animation =
     "gap-animation 1.5s forwards";
 }
+
 document.addEventListener("keypress", keyfunction, true);
 
 function blink() {
